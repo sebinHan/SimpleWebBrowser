@@ -37,9 +37,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        String url = editText.getText().toString();
 
         switch (v.getId()){
-            case R.id.but_move : web.loadUrl(editText.getText().toString()); break;
+            case R.id.but_move :
+                if(url.contains("http://")==false){
+                    url = "http://"+editText.getText().toString();
+                }
+                web.loadUrl(url);
+
+                break;
             case R.id.but_pre : web.goBack();
 
         }
